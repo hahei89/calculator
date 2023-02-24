@@ -107,6 +107,7 @@
             this.button13.TabIndex = 15;
             this.button13.Text = "/";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.operationClick);
             // 
             // button14
             // 
@@ -116,6 +117,7 @@
             this.button14.TabIndex = 14;
             this.button14.Text = "=";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.btnCalculate);
             // 
             // button15
             // 
@@ -145,6 +147,7 @@
             this.button9.TabIndex = 11;
             this.button9.Text = "X";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.operationClick);
             // 
             // button10
             // 
@@ -184,6 +187,7 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "-";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.operationClick);
             // 
             // button6
             // 
@@ -263,6 +267,7 @@
             this.Controls.Add(this.btnPanel);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.panel1.ResumeLayout(false);
             this.btnPanel.ResumeLayout(false);

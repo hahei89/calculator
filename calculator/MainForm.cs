@@ -23,7 +23,8 @@ namespace calculator
         public string Number1
         {
             get { return _number1; }
-            set {
+            set 
+            {
                 _number1 = value; 
                 this.label1.Text = value;
             }
@@ -34,9 +35,10 @@ namespace calculator
         public string Number2
         {
             get { return _number2; }
-            set {
+            set 
+            {
                 _number2 = value;
-                this.label1.Text = Number1+ " " + value;
+                this.label1.Text = Number1+ Operator + value;
             }
         }
 
@@ -51,7 +53,7 @@ namespace calculator
             }
         }
 
-
+        List<string> _operatList = new List<string>();
         /**
          * 1. 记录原比例
          * 窗口加载的时候完成
@@ -103,19 +105,67 @@ namespace calculator
             // 拿到对象后获取对象的Text属性值
             Button btn = sender as Button;
 
-            this.label1.Text = btn.Text;
+            // 当运算符为空时一直往第一个算数中添加
+            if (string.IsNullOrEmpty(Operator))
+            {
+                if (btn.Text == "." && Number1?.IndexOf(".") <= 0)
+                {
+                    this.Number1 += btn.Text;
+                }
+                else if (btn.Text != ".")
+                {
+                    this.Number1 += btn.Text;
+                }
+            }
+            else
+            {
+                if (btn.Text == "." && Number2?.IndexOf(".") <= 0)
+                {
+                    this.Number2 += btn.Text;
+                }
+                else if (btn.Text != ".")
+                {
+                    this.Number2 += btn.Text;
+                }
+            }
 
+            
         }
 
         private void operationClick(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             string op = btn.Text;
-            this.Operator = op;
-            if (string.IsNullOrEmpty(Number1))
+            if (!string.IsNullOrEmpty(Number2))
             {
-                
+                // 执行计算 计算结果给number1
+                btnCalculate(null, null);
             }
+            this.Operator = op;
+        }
+
+        private void btnCalculate(object sender, EventArgs e)
+        {
+            double n1 = double.Parse(Number1);
+            double n2 = double.Parse(Number2);
+
+            switch (Operator) 
+            {
+                case "+":
+                    Number1 =(n1 + n2).ToString();
+                    break;
+                case "-":
+                    Number1 = (n1 - n2).ToString();  
+                    break;
+                case "*":
+                    Number1 = (n1 * n2).ToString();
+                    break;
+                case "/":
+                    Number1 = (n1 / n2).ToString();
+                    break;
+            }
+            Number2 = null;
+            Operator= null;
         }
     }
 }
