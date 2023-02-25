@@ -53,7 +53,6 @@ namespace calculator
             }
         }
 
-        List<string> _operatList = new List<string>();
         /**
          * 1. 记录原比例
          * 窗口加载的时候完成
@@ -128,8 +127,6 @@ namespace calculator
                     this.Number2 += btn.Text;
                 }
             }
-
-            
         }
 
         private void operationClick(object sender, EventArgs e)
