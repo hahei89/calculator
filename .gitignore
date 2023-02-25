@@ -1,4 +1,8 @@
 .vs
 .vs/*
 
-obj/**
+calculate/obj/*
+calculate/bin/*
+
+WFFormUse/obj/*
+WFFormUse/bin/*
